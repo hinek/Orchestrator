@@ -127,7 +127,7 @@ text = "circle clockwise around..."
 margin_top = 48.0
 margin_right = 95.0
 margin_bottom = 68.0
-text = "circle counter clws around..."
+text = "circle counter cw around..."
 [connection signal="pressed" from="PopupMenu/VBoxContainer/None" to="." method="_on_None_pressed"]
 [connection signal="pressed" from="PopupMenu/VBoxContainer/GoNorth" to="." method="_on_GoNorth_pressed"]
 [connection signal="pressed" from="PopupMenu/VBoxContainer/GoEast" to="." method="_on_GoEast_pressed"]

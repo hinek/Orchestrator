@@ -1,5 +1,8 @@
 extends Node2D
 
+const SUCCESS_MESSAGE = preload("res://SuccessMessage.tscn")
+
+var current_level = 0
 var buttons = []
 var targets = []
 var bot_looking_for_target = null
@@ -33,7 +36,35 @@ func button_state_changed(button, is_down):
 			if !reg_button.is_down:
 				print(reg_button, " is not down")
 				return
-		print("level finished")
+		level_finished()
+
+
+func level_finished():
+	print("level finished")
+	print("level finished")
+	get_tree().paused = true
+	var success_message = SUCCESS_MESSAGE.instance()
+	get_tree().current_scene.add_child(success_message)
+	success_message.find_node("SuccessPopup").show()
+
+
+func start_next_level():
+	start_level(current_level + 1)
+
+
+func start_level(levelNo):
+	buttons = []
+	targets = []
+	bot_looking_for_target = null
+	plan_mode = true
+	current_level = levelNo
+	var levelName = "res://levels/Level" + ("%02d" % levelNo) + ".tscn"
+	var file = File.new()
+	if file.file_exists(levelName):
+		get_tree().change_scene(levelName)
+	else:
+		get_tree().change_scene("res://LevelSelect.tscn")
+	get_tree().paused = false
 
 
 func register_target(target):

@@ -18,11 +18,29 @@ var command = CMD_NONE
 var target = null setget set_target
 var motion = Vector2.ZERO
 
+export var restrict_commands = 8
+
 onready var sprite = $Sprite
 onready var animation = $AnimationPlayer
 
 
 func _ready():
+	if (restrict_commands < CMD_GO_NORTH):
+		$PopupMenu/VBoxContainer/GoNorth.hide()
+	if (restrict_commands < CMD_GO_EAST):
+		$PopupMenu/VBoxContainer/GoEast.hide()
+	if (restrict_commands < CMD_GO_SOUTH):
+		$PopupMenu/VBoxContainer/GoSouth.hide()
+	if (restrict_commands < CMD_GO_WEST):
+		$PopupMenu/VBoxContainer/GoWest.hide()
+	if (restrict_commands < CMD_WALK_TOWARDS):
+		$PopupMenu/VBoxContainer/WalkTowards.hide()
+	if (restrict_commands < CMD_WALK_AWAY_FROM):
+		$PopupMenu/VBoxContainer/WalkAwayFrom.hide()
+	if (restrict_commands < CMD_CIRCLE_CLOCKWISE):
+		$PopupMenu/VBoxContainer/CircleClockwise.hide()
+	if (restrict_commands < CMD_CIRCLE_COUNTER):
+		$PopupMenu/VBoxContainer/CircleCounter.hide()
 	pass # Replace with function body.
 
 

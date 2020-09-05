@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Orchestrator"
-run/main_scene="res://World.tscn"
+run/main_scene="res://LevelSelect.tscn"
 config/icon="res://icon.png"
 
 [autoload]
