@@ -1,0 +1,126 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Bot.gd" type="Script" id=1]
+[ext_resource path="res://images/robot_character.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=2]
+resource_name = "idle"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "walk"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 3, 4, 5, 6 ]
+}
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 7, 11 )
+
+[node name="Bot" type="KinematicBody2D"]
+z_index = 10
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+z_index = 10
+texture = ExtResource( 2 )
+hframes = 13
+frame = 1
+region_rect = Rect2( 584, 132, 64, 64 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/idle = SubResource( 2 )
+anims/walk = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 5 )
+shape = SubResource( 1 )
+
+[node name="PopupMenu" type="PopupMenu" parent="."]
+margin_right = 20.0
+margin_bottom = 20.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PopupMenu"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="GoNorth" type="Button" parent="PopupMenu/VBoxContainer"]
+margin_right = 95.0
+margin_bottom = 20.0
+text = "go north"
+
+[node name="GoEast" type="Button" parent="PopupMenu/VBoxContainer"]
+margin_top = 48.0
+margin_right = 95.0
+margin_bottom = 68.0
+text = "go east"
+
+[node name="GoSouth" type="Button" parent="PopupMenu/VBoxContainer"]
+margin_top = 24.0
+margin_right = 95.0
+margin_bottom = 44.0
+text = "go south"
+
+[node name="GoWest" type="Button" parent="PopupMenu/VBoxContainer"]
+margin_top = 48.0
+margin_right = 95.0
+margin_bottom = 68.0
+text = "go west"
+
+[node name="WalkTowards" type="Button" parent="PopupMenu/VBoxContainer"]
+margin_top = 48.0
+margin_right = 95.0
+margin_bottom = 68.0
+text = "walk towards..."
+
+[node name="WalkAwayFrom" type="Button" parent="PopupMenu/VBoxContainer"]
+margin_top = 48.0
+margin_right = 95.0
+margin_bottom = 68.0
+text = "walk away from..."
+
+[node name="CircleClockwise" type="Button" parent="PopupMenu/VBoxContainer"]
+margin_top = 48.0
+margin_right = 95.0
+margin_bottom = 68.0
+text = "circle clockwise around..."
+
+[node name="CircleCounter" type="Button" parent="PopupMenu/VBoxContainer"]
+margin_top = 48.0
+margin_right = 95.0
+margin_bottom = 68.0
+text = "circle counter clws around..."
+[connection signal="pressed" from="PopupMenu/VBoxContainer/GoNorth" to="." method="_on_GoNorth_pressed"]
+[connection signal="pressed" from="PopupMenu/VBoxContainer/GoEast" to="." method="_on_GoEast_pressed"]
+[connection signal="pressed" from="PopupMenu/VBoxContainer/GoSouth" to="." method="_on_GoSouth_pressed"]
+[connection signal="pressed" from="PopupMenu/VBoxContainer/GoWest" to="." method="_on_GoWest_pressed"]
+[connection signal="pressed" from="PopupMenu/VBoxContainer/WalkTowards" to="." method="_on_WalkTowards_pressed"]
+[connection signal="pressed" from="PopupMenu/VBoxContainer/WalkAwayFrom" to="." method="_on_WalkAwayFrom_pressed"]
+[connection signal="pressed" from="PopupMenu/VBoxContainer/CircleClockwise" to="." method="_on_CircleClockwise_pressed"]
+[connection signal="pressed" from="PopupMenu/VBoxContainer/CircleCounter" to="." method="_on_CircleCounter_pressed"]
