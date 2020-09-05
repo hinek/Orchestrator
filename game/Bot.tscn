@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Bot.gd" type="Script" id=1]
 [ext_resource path="res://images/robot_character.png" type="Texture" id=2]
+[ext_resource path="res://images/bubbles.png" type="Texture" id=3]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "idle"
 length = 0.8
 loop = true
@@ -20,7 +21,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 1 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "walk"
 length = 0.8
 loop = true
@@ -37,7 +38,7 @@ tracks/0/keys = {
 "values": [ 3, 4, 5, 6 ]
 }
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 7, 11 )
 
 [node name="Bot" type="KinematicBody2D"]
@@ -55,12 +56,18 @@ frame = 1
 region_rect = Rect2( 584, 132, 64, 64 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/idle = SubResource( 2 )
-anims/walk = SubResource( 3 )
+anims/idle = SubResource( 1 )
+anims/walk = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 5 )
-shape = SubResource( 1 )
+shape = SubResource( 3 )
+
+[node name="CurrentCommand" type="Sprite" parent="."]
+position = Vector2( 0, -16 )
+texture = ExtResource( 3 )
+hframes = 16
+frame = 1
 
 [node name="PopupMenu" type="PopupMenu" parent="."]
 margin_right = 20.0
@@ -69,6 +76,11 @@ margin_bottom = 20.0
 [node name="VBoxContainer" type="VBoxContainer" parent="PopupMenu"]
 margin_right = 40.0
 margin_bottom = 40.0
+
+[node name="None" type="Button" parent="PopupMenu/VBoxContainer"]
+margin_right = 12.0
+margin_bottom = 20.0
+text = "do nothing"
 
 [node name="GoNorth" type="Button" parent="PopupMenu/VBoxContainer"]
 margin_right = 95.0
@@ -116,6 +128,7 @@ margin_top = 48.0
 margin_right = 95.0
 margin_bottom = 68.0
 text = "circle counter clws around..."
+[connection signal="pressed" from="PopupMenu/VBoxContainer/None" to="." method="_on_None_pressed"]
 [connection signal="pressed" from="PopupMenu/VBoxContainer/GoNorth" to="." method="_on_GoNorth_pressed"]
 [connection signal="pressed" from="PopupMenu/VBoxContainer/GoEast" to="." method="_on_GoEast_pressed"]
 [connection signal="pressed" from="PopupMenu/VBoxContainer/GoSouth" to="." method="_on_GoSouth_pressed"]

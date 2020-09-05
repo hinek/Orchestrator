@@ -14,8 +14,8 @@ const CMD_CIRCLE_CLOCKWISE = 7
 const CMD_CIRCLE_COUNTER = 8
 
 
-var command = null
-var target = null
+var command = CMD_NONE
+var target = null setget set_target
 var motion = Vector2.ZERO
 
 onready var sprite = $Sprite
@@ -34,7 +34,7 @@ func _process(delta):
 			if abs(pos.x) < EXTENT && abs(pos.y) < EXTENT:
 				handle_mouse_click()
 	else:
-		if command == null:
+		if command == CMD_NONE:
 			return
 		if command == CMD_GO_NORTH:
 			motion = Vector2(0, -MAX_VELOCITY)
@@ -71,8 +71,17 @@ func set_command(value):
 	command = value
 	target = null
 	$PopupMenu.visible = false
-	if command >= CMD_WALK_TOWARDS:
+	if command < CMD_WALK_TOWARDS:
+		$CurrentCommand.frame = command + 1
+	else:
 		CentralHub.bot_looking_for_target = self
+		
+func set_target(value):
+	target = value
+	$CurrentCommand.frame = command + 1
+
+func _on_None_pressed():
+	set_command(CMD_NONE)
 
 func _on_GoNorth_pressed():
 	set_command(CMD_GO_NORTH)
