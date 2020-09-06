@@ -295,11 +295,12 @@ margin_left = 320.0
 margin_top = 448.0
 margin_right = 704.0
 margin_bottom = 513.0
-text = "ST-1PD will start executing its  program,
+text = "ST-1PD will start executing its program,
 when you hit the space bar.
 
 If you somehow screw up,
-you can hit R to restart the level."
+you can hit space to return to plan mode
+or R to completely reset the level."
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false

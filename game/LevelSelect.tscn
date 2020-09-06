@@ -93,6 +93,22 @@ margin_bottom = 44.0
 size_flags_horizontal = 3
 text = "6"
 
+[node name="Level07" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+margin_left = 116.0
+margin_top = 24.0
+margin_right = 170.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+text = "7"
+
+[node name="Level08" type="Button" parent="CenterContainer/VBoxContainer/GridContainer"]
+margin_left = 174.0
+margin_top = 24.0
+margin_right = 228.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+text = "8"
+
 [node name="Version" type="Label" parent="CenterContainer/VBoxContainer"]
 margin_top = 169.0
 margin_right = 230.0
@@ -100,7 +116,7 @@ margin_bottom = 234.0
 custom_colors/font_color = Color( 0.533333, 0.533333, 0.533333, 1 )
 text = "
 
-Version 0.1.0.6 by Hinek
+Version 0.1.1.7 by Hinek
 https://derhinek.itch.io/orchestrator"
 align = 1
 [connection signal="pressed" from="CenterContainer/VBoxContainer/GridContainer/Level01" to="." method="_on_LevelButton_pressed" binds= [ 1 ]]
@@ -109,3 +125,5 @@ align = 1
 [connection signal="pressed" from="CenterContainer/VBoxContainer/GridContainer/Level04" to="." method="_on_LevelButton_pressed" binds= [ 4 ]]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/GridContainer/Level05" to="." method="_on_LevelButton_pressed" binds= [ 5 ]]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/GridContainer/Level06" to="." method="_on_LevelButton_pressed" binds= [ 6 ]]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/GridContainer/Level07" to="." method="_on_LevelButton_pressed" binds= [ 7 ]]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/GridContainer/Level08" to="." method="_on_LevelButton_pressed" binds= [ 8 ]]
