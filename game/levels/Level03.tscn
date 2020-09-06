@@ -265,11 +265,14 @@ position = Vector2( 512, 288 )
 position = Vector2( 704, 288 )
 
 [node name="Instruction" type="Label" parent="."]
-margin_left = 448.0
+margin_left = 384.0
 margin_top = 384.0
-margin_right = 576.0
-margin_bottom = 432.0
-text = "I'm sure you will
+margin_right = 640.0
+margin_bottom = 483.0
+text = "I gave you some new
+commands to choose from.
+
+I'm sure you will
 figure out this one
 by yourself."
 align = 1

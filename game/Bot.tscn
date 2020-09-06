@@ -42,14 +42,12 @@ tracks/0/keys = {
 extents = Vector2( 7, 11 )
 
 [node name="Bot" type="KinematicBody2D"]
-z_index = 10
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Sprite" type="Sprite" parent="."]
-z_index = 10
 texture = ExtResource( 2 )
 hframes = 13
 frame = 1

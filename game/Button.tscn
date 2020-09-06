@@ -24,6 +24,7 @@ tracks/0/keys = {
 }
 
 [node name="Button" type="Area2D"]
+z_index = -10
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true

@@ -280,14 +280,22 @@ __meta__ = {
 
 [node name="InstructionAnchor" type="Label" parent="."]
 margin_left = 704.0
-margin_top = 424.0
+margin_top = 224.0
 margin_right = 960.0
-margin_bottom = 512.0
-text = "This is an anchor.
-Some commands need
-a target to be specified.
-Click the target, after
-you chose the command."
+margin_bottom = 374.0
+text = "I gave you some
+new commands to choose from.
+
+Some commands need a target
+to be specified.
+Click the target,
+after you chose the command.
+
+
+
+
+
+Yellow blocks are possible targets."
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false

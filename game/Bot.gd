@@ -51,6 +51,8 @@ func _process(delta):
 			var pos = get_local_mouse_position()
 			if abs(pos.x) < EXTENT && abs(pos.y) < EXTENT:
 				handle_mouse_click()
+			else:
+				handle_mouse_unclick()
 	else:
 		if command == CMD_NONE:
 			return
@@ -62,7 +64,7 @@ func _process(delta):
 			motion = Vector2(0, MAX_VELOCITY)
 		elif command == CMD_GO_WEST:
 			motion = Vector2(-MAX_VELOCITY, 0)
-		else:
+		elif target != null:
 			var target_vector = (target.position - self.position).normalized()
 			if command == CMD_WALK_TOWARDS:
 				motion = target_vector * MAX_VELOCITY
@@ -82,13 +84,17 @@ func handle_mouse_click():
 	var handled = CentralHub.element_clicked(self)
 	if !handled:
 		$PopupMenu.rect_position = Vector2(self.position.x + EXTENT, self.position.y)
-		$PopupMenu.visible = true
+		$PopupMenu.show()
+
+
+func handle_mouse_unclick():
+	$PopupMenu.hide()
 
 
 func set_command(value):
 	command = value
 	target = null
-	$PopupMenu.visible = false
+	$PopupMenu.hide()
 	if command < CMD_WALK_TOWARDS:
 		$CurrentCommand.frame = command + 1
 	else:

@@ -22,7 +22,8 @@ func _process(delta):
 		bot_looking_for_target = null
 		plan_mode = true
 		get_tree().reload_current_scene()
-	pass
+	elif Input.is_action_just_pressed("ui_cancel"):
+		get_tree().change_scene("res://LevelSelect.tscn")
 
 
 func register_button(button):

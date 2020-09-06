@@ -275,4 +275,19 @@ position = Vector2( 432, 384 )
 
 [node name="Anchor" parent="." instance=ExtResource( 2 )]
 position = Vector2( 832, 384 )
+
+[node name="Instruction" type="Label" parent="."]
+margin_left = 64.0
+margin_top = 432.0
+margin_right = 320.0
+margin_bottom = 514.0
+text = "The robots work together
+like a well oiled machine.
+
+But as machines get more complex,
+events get more unpredictable."
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="input_event" from="Anchor" to="Anchor" method="_on_Anchor_input_event"]

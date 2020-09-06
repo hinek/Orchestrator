@@ -267,8 +267,8 @@ margin_top = 160.0
 margin_right = 319.0
 margin_bottom = 225.0
 text = "This is ST-1PD.
-Click on him and
-program him with
+Click on it and
+program it with
 a simple command."
 align = 1
 __meta__ = {
@@ -294,7 +294,7 @@ margin_left = 320.0
 margin_top = 448.0
 margin_right = 704.0
 margin_bottom = 513.0
-text = "ST-1PD will start executing his program,
+text = "ST-1PD will start executing its  program,
 when you hit the space bar.
 
 If you somehow screw up,
