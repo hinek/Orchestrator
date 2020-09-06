@@ -5,6 +5,7 @@ const SUCCESS_MESSAGE = preload("res://SuccessMessage.tscn")
 var current_level = 0
 var buttons = []
 var targets = []
+var target_positions = []
 var plan_mode = true
 
 
@@ -23,17 +24,40 @@ func _ready():
 	pass # Replace with function body.
 
 
+func initialize():
+	buttons = []
+	targets = []
+	target_positions = []
+	bot_looking_for_target = null
+	plan_mode = true
+
+
 func _process(delta):
-	if Input.is_action_just_pressed("start") && plan_mode:
-		plan_mode = false
-	elif Input.is_action_just_pressed("reset") && !plan_mode:
-		buttons = []
-		targets = []
-		bot_looking_for_target = null
-		plan_mode = true
-		get_tree().reload_current_scene()
+	if Input.is_action_just_pressed("start"):
+		if plan_mode:
+			start_execution()
+		else:
+			return_to_plan_mode()
+	elif Input.is_action_just_pressed("reset"):
+		reset_level()
 	elif Input.is_action_just_pressed("ui_cancel"):
 		get_tree().change_scene("res://LevelSelect.tscn")
+
+
+func start_execution():
+	plan_mode = false
+
+
+func return_to_plan_mode():
+	for i in range(targets.size()):
+		targets[i].position = target_positions[i]
+	bot_looking_for_target = null
+	plan_mode = true
+
+
+func reset_level():
+	initialize()
+	get_tree().reload_current_scene()
 
 
 func register_button(button):
@@ -64,10 +88,7 @@ func start_next_level():
 
 
 func start_level(levelNo):
-	buttons = []
-	targets = []
-	bot_looking_for_target = null
-	plan_mode = true
+	initialize()
 	current_level = levelNo
 	var levelName = "res://levels/Level" + ("%02d" % levelNo) + ".tscn"
 	var file = File.new()
@@ -80,6 +101,7 @@ func start_level(levelNo):
 
 func register_target(target):
 	targets.append(target)
+	target_positions.append(target.position)
 	print ("target registered: ", target)
 
 
