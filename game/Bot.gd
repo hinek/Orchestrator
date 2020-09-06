@@ -25,6 +25,7 @@ onready var animation = $AnimationPlayer
 
 
 func _ready():
+	CentralHub.register_target(self)
 	if (restrict_commands < CMD_GO_NORTH):
 		$PopupMenu/VBoxContainer/GoNorth.hide()
 	if (restrict_commands < CMD_GO_EAST):
@@ -41,7 +42,6 @@ func _ready():
 		$PopupMenu/VBoxContainer/CircleClockwise.hide()
 	if (restrict_commands < CMD_CIRCLE_COUNTER):
 		$PopupMenu/VBoxContainer/CircleCounter.hide()
-	pass # Replace with function body.
 
 
 func _process(delta):
@@ -89,6 +89,13 @@ func handle_mouse_click():
 
 func handle_mouse_unclick():
 	$PopupMenu.hide()
+
+
+func show_select_target_indicator():
+	$SelectTarget.show()
+
+func hide_select_target_indicator():
+	$SelectTarget.hide()
 
 
 func set_command(value):

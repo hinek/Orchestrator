@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Bot.gd" type="Script" id=1]
 [ext_resource path="res://images/robot_character.png" type="Texture" id=2]
 [ext_resource path="res://images/bubbles.png" type="Texture" id=3]
+[ext_resource path="res://images/select_target.png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle"
@@ -66,6 +67,12 @@ position = Vector2( 0, -16 )
 texture = ExtResource( 3 )
 hframes = 16
 frame = 1
+
+[node name="SelectTarget" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, 5 )
+z_index = -2
+texture = ExtResource( 4 )
 
 [node name="PopupMenu" type="PopupMenu" parent="."]
 margin_right = 20.0

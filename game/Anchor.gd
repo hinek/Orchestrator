@@ -22,6 +22,13 @@ func handle_mouse_click():
 	CentralHub.element_clicked(self)
 
 
+func show_select_target_indicator():
+	$SelectTarget.show()
+
+func hide_select_target_indicator():
+	$SelectTarget.hide()
+
+
 #why doesn't this work?
 func _on_Anchor_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:

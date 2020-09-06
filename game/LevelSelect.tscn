@@ -100,7 +100,7 @@ margin_bottom = 234.0
 custom_colors/font_color = Color( 0.533333, 0.533333, 0.533333, 1 )
 text = "
 
-Version 0.1.0.4 by Hinek
+Version 0.1.0.5 by Hinek
 https://derhinek.itch.io/orchestrator"
 align = 1
 [connection signal="pressed" from="CenterContainer/VBoxContainer/GridContainer/Level01" to="." method="_on_LevelButton_pressed" binds= [ 1 ]]

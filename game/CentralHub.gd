@@ -5,8 +5,18 @@ const SUCCESS_MESSAGE = preload("res://SuccessMessage.tscn")
 var current_level = 0
 var buttons = []
 var targets = []
-var bot_looking_for_target = null
 var plan_mode = true
+
+
+var bot_looking_for_target = null setget set_bot_looking_for_target
+func set_bot_looking_for_target(value):
+	bot_looking_for_target = value
+	if value != null:
+		for target in targets:
+			target.show_select_target_indicator()
+	else:
+		for target in targets:
+			target.hide_select_target_indicator()
 
 
 func _ready():
@@ -79,7 +89,7 @@ func element_clicked(element):
 	var handled = false
 	if bot_looking_for_target != null:
 		bot_looking_for_target.target = element
-		bot_looking_for_target = null
+		set_bot_looking_for_target(null)
 		handled = true
 	print (element, " clicked", " and handled" if handled else "")
 	return handled
